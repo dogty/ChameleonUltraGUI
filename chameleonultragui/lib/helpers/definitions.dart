@@ -122,6 +122,8 @@ enum ChameleonCommand {
   mf0NtagGetDetectionLog(4035),
   mf0NtagGetDetectionEnable(4036),
   mf0NtagGetEmulatorConfig(4037),
+  amiiboSetKeys(4038),
+  amiiboGetKeysStatus(4039),
 
   // read slot info
   mf1GetBlockData(4008),
@@ -208,7 +210,10 @@ enum ButtonConfig {
   cycleForward(1),
   cycleBackward(2),
   cloneUID(3),
-  chargeStatus(4);
+  chargeStatus(4),
+  nfcFieldGenerator(5),
+  randomizeUid(6),
+  factoryReset(7);
 
   const ButtonConfig(this.value);
   final int value;

@@ -1156,4 +1156,17 @@ class ChameleonCommunicator {
         writeMode: mode // write mode
         );
   }
+
+  // Amiibo key management
+  Future<void> amiiboSetKeys(Uint8List keysData) async {
+    if (keysData.length != 160) {
+      throw Exception('Amiibo keys must be exactly 160 bytes');
+    }
+    await sendCmd(ChameleonCommand.amiiboSetKeys, data: keysData);
+  }
+
+  Future<bool> amiiboGetKeysStatus() async {
+    var resp = await sendCmd(ChameleonCommand.amiiboGetKeysStatus);
+    return resp!.data.isNotEmpty && resp.data[0] == 1;
+  }
 }

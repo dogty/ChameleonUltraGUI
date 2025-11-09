@@ -348,6 +348,12 @@ ButtonConfig getButtonConfigType(int value) {
     return ButtonConfig.cloneUID;
   } else if (value == 4) {
     return ButtonConfig.chargeStatus;
+  } else if (value == 5) {
+    return ButtonConfig.nfcFieldGenerator;
+  } else if (value == 6) {
+    return ButtonConfig.randomizeUid;
+  } else if (value == 7) {
+    return ButtonConfig.factoryReset;
   } else {
     return ButtonConfig.disable;
   }

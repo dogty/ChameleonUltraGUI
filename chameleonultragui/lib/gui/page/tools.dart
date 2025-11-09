@@ -1,6 +1,7 @@
 import 'package:chameleonultragui/generated/i18n/app_localizations.dart';
 import 'package:chameleonultragui/gui/menu/tools/dictionary_download.dart';
 import 'package:chameleonultragui/gui/menu/tools/t55xx_password_cleaner.dart';
+import 'package:chameleonultragui/gui/menu/tools/amiibo_keys_upload.dart';
 import 'package:chameleonultragui/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -47,6 +48,12 @@ class ToolsPageState extends State<ToolsPage> {
           description: localizations.t55xx_password_cleaner_description,
           icon: Icons.password,
           onPressed: const T55XXPasswordCleanerMenu(),
+          isDeviceRequired: true),
+      ToolItem(
+          name: localizations.amiibo_keys_upload,
+          description: localizations.amiibo_keys_upload_description,
+          icon: Icons.nfc,
+          onPressed: const AmiiboKeysUploadMenu(),
           isDeviceRequired: true),
       ToolItem(
           name: localizations.mifare_classic_gen4,

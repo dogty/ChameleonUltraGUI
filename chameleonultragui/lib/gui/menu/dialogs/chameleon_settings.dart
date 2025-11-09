@@ -187,7 +187,10 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                           localizations.forward,
                           localizations.backward,
                           localizations.clone_uid,
-                          localizations.charge
+                          localizations.charge,
+                          localizations.nfc_field_generator,
+                          localizations.randomize_uid,
+                          localizations.factory_reset_tag
                         ],
                         selectedValue: settings.aPress.value,
                         onChange: (int index) async {
@@ -200,6 +203,12 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                             mode = ButtonConfig.cloneUID;
                           } else if (index == 4) {
                             mode = ButtonConfig.chargeStatus;
+                          } else if (index == 5) {
+                            mode = ButtonConfig.nfcFieldGenerator;
+                          } else if (index == 6) {
+                            mode = ButtonConfig.randomizeUid;
+                          } else if (index == 7) {
+                            mode = ButtonConfig.factoryReset;
                           }
 
                           await appState.communicator!
@@ -218,7 +227,10 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                           localizations.forward,
                           localizations.backward,
                           localizations.clone_uid,
-                          localizations.charge
+                          localizations.charge,
+                          localizations.nfc_field_generator,
+                          localizations.randomize_uid,
+                          localizations.factory_reset_tag
                         ],
                         selectedValue: settings.bPress.value,
                         onChange: (int index) async {
@@ -231,6 +243,12 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                             mode = ButtonConfig.cloneUID;
                           } else if (index == 4) {
                             mode = ButtonConfig.chargeStatus;
+                          } else if (index == 5) {
+                            mode = ButtonConfig.nfcFieldGenerator;
+                          } else if (index == 6) {
+                            mode = ButtonConfig.randomizeUid;
+                          } else if (index == 7) {
+                            mode = ButtonConfig.factoryReset;
                           }
 
                           await appState.communicator!
@@ -252,7 +270,10 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                           localizations.forward,
                           localizations.backward,
                           localizations.clone_uid,
-                          localizations.charge
+                          localizations.charge,
+                          localizations.nfc_field_generator,
+                          localizations.randomize_uid,
+                          localizations.factory_reset_tag
                         ],
                         selectedValue: settings.aLongPress.value,
                         onChange: (int index) async {
@@ -265,6 +286,12 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                             mode = ButtonConfig.cloneUID;
                           } else if (index == 4) {
                             mode = ButtonConfig.chargeStatus;
+                          } else if (index == 5) {
+                            mode = ButtonConfig.nfcFieldGenerator;
+                          } else if (index == 6) {
+                            mode = ButtonConfig.randomizeUid;
+                          } else if (index == 7) {
+                            mode = ButtonConfig.factoryReset;
                           }
 
                           await appState.communicator!
@@ -283,7 +310,10 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                           localizations.forward,
                           localizations.backward,
                           localizations.clone_uid,
-                          localizations.charge
+                          localizations.charge,
+                          localizations.nfc_field_generator,
+                          localizations.randomize_uid,
+                          localizations.factory_reset_tag
                         ],
                         selectedValue: settings.bLongPress.value,
                         onChange: (int index) async {
@@ -296,6 +326,12 @@ class ChameleonSettingsState extends State<ChameleonSettings> {
                             mode = ButtonConfig.cloneUID;
                           } else if (index == 4) {
                             mode = ButtonConfig.chargeStatus;
+                          } else if (index == 5) {
+                            mode = ButtonConfig.nfcFieldGenerator;
+                          } else if (index == 6) {
+                            mode = ButtonConfig.randomizeUid;
+                          } else if (index == 7) {
+                            mode = ButtonConfig.factoryReset;
                           }
 
                           await appState.communicator!
