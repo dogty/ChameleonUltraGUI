@@ -1169,4 +1169,32 @@ class ChameleonCommunicator {
     var resp = await sendCmd(ChameleonCommand.amiiboGetKeysStatus);
     return resp!.data.isNotEmpty && resp.data[0] == 1;
   }
+
+  /// Set amiibo mode for a slot.
+  /// IMPORTANT: Amiibo mode can ONLY be enabled for NTAG215 tags.
+  /// Attempting to enable it for other tag types will throw an exception.
+  ///
+  /// When enabled, amiibo re-encryption will be performed on UID changes (if keys are loaded).
+  /// When disabled, all amiibo functionality is bypassed for that slot.
+  ///
+  /// @param slot Slot number (0-7)
+  /// @param enabled True to enable amiibo mode, false to disable
+  /// @throws Exception if slot is not NTAG215 when enabling
+  Future<void> amiiboSetMode(int slot, bool enabled) async {
+    final data = Uint8List(2);
+    data[0] = slot; // slot number (0-7)
+    data[1] = enabled ? 1 : 0; // mode (0=disabled, 1=enabled)
+    await sendCmd(ChameleonCommand.amiiboSetMode, data: data);
+  }
+
+  /// Get the amiibo mode status for a slot.
+  ///
+  /// @param slot Slot number (0-7)
+  /// @return True if amiibo mode is enabled, false otherwise
+  Future<bool> amiiboGetMode(int slot) async {
+    final data = Uint8List(1);
+    data[0] = slot; // slot number (0-7)
+    var resp = await sendCmd(ChameleonCommand.amiiboGetMode, data: data);
+    return resp!.data.isNotEmpty && resp.data[0] == 1;
+  }
 }

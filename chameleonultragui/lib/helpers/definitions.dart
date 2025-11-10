@@ -124,6 +124,8 @@ enum ChameleonCommand {
   mf0NtagGetEmulatorConfig(4037),
   amiiboSetKeys(4038),
   amiiboGetKeysStatus(4039),
+  amiiboSetMode(4040),
+  amiiboGetMode(4041),
 
   // read slot info
   mf1GetBlockData(4008),

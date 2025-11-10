@@ -55,6 +55,7 @@ class SlotEditMenuState extends State<SlotEditMenu> {
   TagType previousTagType = TagType.unknown;
   EmulatorSettings? emulatorSettings;
   int detectionCount = 0;
+  bool amiiboMode = false;
 
   @override
   void initState() {
@@ -138,6 +139,15 @@ class SlotEditMenuState extends State<SlotEditMenu> {
             detectionCount =
                 await appState.communicator!.mf0NtagGetDetectionCount();
           }
+
+          // Load amiibo mode for NTAG215
+          if (selectedType! == TagType.ntag215) {
+            try {
+              amiiboMode = await appState.communicator!.amiiboGetMode(widget.slot);
+            } catch (_) {
+              amiiboMode = false;
+            }
+          }
         }
       } catch (_) {}
     }
@@ -212,6 +222,11 @@ class SlotEditMenuState extends State<SlotEditMenu> {
             await appState.communicator!
                 .mf0EmulatorSetCounterData(i, counterValue, true);
           }
+        }
+
+        // Save amiibo mode for NTAG215
+        if (selectedType! == TagType.ntag215) {
+          await appState.communicator!.amiiboSetMode(widget.slot, amiiboMode);
         }
       }
     }
@@ -748,6 +763,25 @@ class SlotEditMenuState extends State<SlotEditMenu> {
                                                             ? true
                                                             : false);
                                               }),
+
+                                          // Amiibo mode (NTAG215 only)
+                                          if (selectedType! == TagType.ntag215) ...[
+                                            const SizedBox(height: 8),
+                                            const Text("Amiibo Mode"),
+                                            const SizedBox(height: 8),
+                                            ToggleButtonsWrapper(
+                                                items: [
+                                                  localizations.yes,
+                                                  localizations.no
+                                                ],
+                                                selectedValue: amiiboMode ? 0 : 1,
+                                                onChange: (int index) async {
+                                                  setState(() {
+                                                    amiiboMode = (index == 0);
+                                                  });
+                                                }),
+                                            const SizedBox(height: 8),
+                                          ],
                                           ...(emulatorSettings!
                                                   .isDetectionEnabled)
                                               ? [

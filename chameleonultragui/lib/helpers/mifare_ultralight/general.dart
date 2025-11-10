@@ -18,6 +18,9 @@ bool isMifareUltralight(TagType type) {
   ].contains(type);
 }
 
+bool isNtag215(TagType type) {
+  return type == TagType.ntag215;
+}
 Future<Uint8List> mfUltralightGetVersion(
     ChameleonCommunicator communicator) async {
   return await communicator.send14ARaw(Uint8List.fromList([0x60]));
